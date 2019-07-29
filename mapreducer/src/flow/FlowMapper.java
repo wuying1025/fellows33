@@ -8,6 +8,7 @@ import java.io.IOException;
 
 public class FlowMapper extends Mapper<LongWritable,Text,Text,FlowBean>{
     FlowBean fb = new FlowBean();
+    Text t = new Text();
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
         String line = value.toString();
@@ -18,6 +19,7 @@ public class FlowMapper extends Mapper<LongWritable,Text,Text,FlowBean>{
         fb.setUpFlow(up);
         fb.setDownFlow(down);
         fb.setSumFlow(up,down);
-        context.write(new Text(phone),fb);
+        t.set(phone);
+        context.write(t,fb);
     }
 }
