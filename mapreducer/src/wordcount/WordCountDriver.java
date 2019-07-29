@@ -41,6 +41,8 @@ public class WordCountDriver {
         job.setInputFormatClass(CombineTextInputFormat.class);
         CombineTextInputFormat.setMaxInputSplitSize(job, 4194304);// 4m
         CombineTextInputFormat.setMinInputSplitSize(job, 2097152);//2m
+//
+//        job.setCombinerClass(WordCountCombiner.class);
 
         // 7 将job中配置的相关参数，以及job所用的java类所在的jar包， 提交给yarn去运行
 //		job.submit();
