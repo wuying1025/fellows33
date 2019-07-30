@@ -42,6 +42,7 @@ public class FileterRecordWriter extends RecordWriter<Text,NullWritable> {
 
     @Override
     public void close(TaskAttemptContext taskAttemptContext) throws IOException, InterruptedException {
-
+        weichuangOut.close();
+        otherOut.close();
     }
 }
