@@ -69,4 +69,19 @@ public class IOHdfs {
         IOUtils.closeStream(fis);
         IOUtils.closeStream(fos);
     }
+
+    @Test
+    public void putFileToHDFS() throws Exception{
+        // 1 创建配置信息对象
+        Configuration configuration = new Configuration();
+        FileSystem fs = FileSystem.get(new URI("hdfs://hadoop100:8020"),configuration, "root");
+        // 2 创建输出流
+        FSDataOutputStream fos = fs.create(new Path("/user/weichuang/input/hello6.txt"));
+        // 3 写数据
+        fos.write("hello".getBytes());
+        // 4 一致性刷新
+        fos.hflush();
+        fos.close();
+    }
+
 }
