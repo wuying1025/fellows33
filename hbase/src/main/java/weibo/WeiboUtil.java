@@ -54,6 +54,9 @@ public class WeiboUtil {
         Result result = relTable.get(g);
         Cell[] cells = result.rawCells();
         List<Put> lp = new ArrayList<Put>();
+        if(cells.length <= 0){
+            return;
+        }
         for (Cell cell : cells) {
             byte[] qualifier = CellUtil.cloneQualifier(cell);//粉丝 B
             //3.加入微博收件箱表
@@ -65,11 +68,15 @@ public class WeiboUtil {
     }
 
     public static void main(String[] args) throws Exception {
-        createNameSpace(Constant.WEIBO);
-        //用户关系表
-        createTable(Constant.WEIBO_RELATIONS,1,"attends","fans");
-        createTable(Constant.WEIBO_CONTENT,1,"info");
-        createTable(Constant.WEIBO_RECEIVE_CONTENT_EMAIL,3,"info");
+//        createNameSpace(Constant.WEIBO);
+//        //用户关系表
+//        createTable(Constant.WEIBO_RELATIONS,1,"attends","fans");
+//        createTable(Constant.WEIBO_CONTENT,1,"info");
+//        createTable(Constant.WEIBO_RECEIVE_CONTENT_EMAIL,3,"info");
+        putContent("1001","abc");
+        putContent("1001","def");
+        putContent("1001","123");
+
     }
 
 }
